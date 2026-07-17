@@ -28,7 +28,7 @@ const UserTable = ({ users }) => {
                 <Table.Cell>{user.email}</Table.Cell>
 
                 <Table.Cell>
-                  <Link className={"mr-3"} href={`/users/${user._id}`}>
+                  <Link className={"mr-3"} href={`/users/${user._id}/edit`}>
                     <Button variant="outline">
                       <PencilToSquare />
                     </Button>
