@@ -1,11 +1,13 @@
-import { PencilToSquare, TrashBin } from "@gravity-ui/icons";
+import { PencilToSquare } from "@gravity-ui/icons";
 import { Button, Table } from "@heroui/react";
 import Link from "next/link";
 import React from "react";
+import { DeleteButton } from "../Delete/DeleteButton";
+import { deleteUser } from "@/app/lib/action";
 
 const UserTable = ({ users }) => {
-    console.log(users)
-    
+  
+
   return (
     <Table>
       <Table.ScrollContainer>
@@ -24,24 +26,21 @@ const UserTable = ({ users }) => {
                 <Table.Cell>{user.role}</Table.Cell>
                 <Table.Cell>{user.gender}</Table.Cell>
                 <Table.Cell>{user.email}</Table.Cell>
-                
+
                 <Table.Cell>
                   <Link className={"mr-3"} href={`/users/${user._id}`}>
                     <Button variant="outline">
                       <PencilToSquare />
                     </Button>
                   </Link>
-                  <Link className={"mr-3"} href={`/users/${user._id}`}>
-                    <Button variant="danger">
-                      <TrashBin />
-                    </Button>
-                  </Link>
+
+                        <DeleteButton user={user} deleteUser={deleteUser} />
+
                   <Link className={"mr-3"} href={`/users/${user._id}`}>
                     <Button>Details</Button>
                   </Link>
                 </Table.Cell>
-                </Table.Row>
-                
+              </Table.Row>
             ))}
           </Table.Body>
         </Table.Content>
