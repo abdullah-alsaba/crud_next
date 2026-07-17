@@ -18,3 +18,27 @@ export const deleteUser = async (userId) => {
     
     return data
 }
+
+
+
+export const createUser = async (formData) => {
+    'use server'
+
+const newUser= Object.fromEntries(formData.entries())
+
+    const res = await fetch("http://localhost:7000/users", {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(newUser)
+    });
+    const data = await res.json()
+
+    if (data.insertedId) {
+        revalidatePath('/users')
+    }
+    
+    return data; 
+
+}
