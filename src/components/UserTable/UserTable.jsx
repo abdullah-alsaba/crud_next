@@ -4,6 +4,8 @@ import Link from "next/link";
 import React from "react";
 
 const UserTable = ({ users }) => {
+    console.log(users)
+    
   return (
     <Table>
       <Table.ScrollContainer>
@@ -22,7 +24,7 @@ const UserTable = ({ users }) => {
                 <Table.Cell>{user.role}</Table.Cell>
                 <Table.Cell>{user.gender}</Table.Cell>
                 <Table.Cell>{user.email}</Table.Cell>
-
+                
                 <Table.Cell>
                   <Link className={"mr-3"} href={`/users/${user._id}`}>
                     <Button variant="outline">
@@ -38,7 +40,8 @@ const UserTable = ({ users }) => {
                     <Button>Details</Button>
                   </Link>
                 </Table.Cell>
-              </Table.Row>
+                </Table.Row>
+                
             ))}
           </Table.Body>
         </Table.Content>
